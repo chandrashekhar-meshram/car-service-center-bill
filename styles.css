@@ -1,0 +1,25 @@
+body {
+  background-color:coral;
+}
+
+table tr th, 
+table tr td {
+  border: 1px solid white;
+  padding: 0.3rem 1.5rem 0.3rem 0.5rem;
+}
+
+table tr th {
+  text-align: center;
+}
+
+.bill-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.orders {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

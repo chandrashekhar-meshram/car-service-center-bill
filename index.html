@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!--
+      Need a visual blank slate?
+      Remove all code in `styles.css`!
+    -->
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <h1>Car Service Station Bill</h1>
+    <h3>Service Chart</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Service Code</th>
+          <th>Service</th>
+          <th>Hatchback</th>
+          <th>Sedan</th>
+          <th>SUV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>BS01</td>
+          <td>Basic Servicing</td>
+          <td>₹ 2000</td>
+          <td>₹ 4000</td>
+          <td>₹ 5000</td>
+        </tr>
+        <tr>
+          <td>EF01</td>
+          <td>Engine Fixing</td>
+          <td>₹ 5000</td>
+          <td>₹ 8000</td>
+          <td>₹ 10000</td>
+        </tr>
+        <tr>
+          <td>CF01</td>
+          <td>Clutch Fixing</td>
+          <td>₹ 2000</td>
+          <td>₹ 4000</td>
+          <td>₹ 6000</td>
+        </tr>
+        <tr>
+          <td>BF01</td>
+          <td>Brake Fixing</td>
+          <td>₹ 1000</td>
+          <td>₹ 1500</td>
+          <td>₹ 2500</td>
+        </tr>
+        <tr>
+          <td>GF01</td>
+          <td>Gear Fixing</td>
+          <td>₹ 3000</td>
+          <td>₹ 6000</td>
+          <td>₹ 8000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="bill-container">
+      <h3>Order</h3>
+      <div class="orders">
+        <div>
+          <label for="car-type" style="margin-right: 15px">Type of Car</label>
+          <input type="text" name="car-type" id="car-type" />
+        </div>
+
+        <div>
+          <label for="service-code">Service Codes</label>
+          <input type="text" name="service-code" id="service-code" />
+        </div>
+
+        <div id="order">
+          <p>Type of Car – <span id="car"> </span></p>
+          <p>Service Codes – <span id="service-codes"></span></p>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Service</th>
+              <th>Charges</th>
+            </tr>
+          </thead>
+          <tbody id="bill"></tbody>
+        </table>
+
+        <h3>Total Amout: ₹ <span id="total-amount">0</span></h3>
+      </div>
+    </div>
+  </body>
+</html>
