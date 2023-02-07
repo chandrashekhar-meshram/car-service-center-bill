@@ -21,7 +21,15 @@ var basicServicingBill = '',
   engineFixingBill = '',
   clutchFixingBill = '',
   brakeFixingBill = '',
-  gearFixingBill = '';
+  gearFixingBill = '',
+  complimentaryCleaningBill = '<tr><td>' + 'complimentaryCleaning' + '</td><td>₹  ' + 0 + '</td></tr>';
+
+var basicServicingAmount = 0,
+    engineFixingAmount = 0,
+    clutchFixingAmount = 0,
+    brakeFixingAmount = 0,
+    gearFixingAmount = 0,
+    complimentaryCleaning = 0;
 
 var totalAmount  = 0;
 
@@ -61,37 +69,41 @@ service_code.addEventListener('blur', function () {
 
 function basicServicing() {
   if (service_code.value === 'BS01') {
-    //service = 'Basic Servicing';
-    basicServicingBill = '<tr><td>' + 'Basic Servicing' + '</td><td>₹  ' + basicServicingPrice[carIndex] + '</td></tr>';
+    basicServicingAmount = basicServicingPrice[carIndex];
+    basicServicingBill = '<tr><td>' + 'Basic Servicing' + '</td><td>₹  ' + basicServicingAmount + '</td></tr>';
     showBill();
+    console.log("basicServicingAmount", typeof basicServicingAmount);
   } 
 }
 
 function engineFixing() {
   if (service_code.value === 'EF01') {
-    //service = 'Engine Fixing';
-    engineFixingBill = '<tr><td>' + 'Engine Fixing' + '</td><td>₹  ' + engineFixingPrice[carIndex] + '</td></tr>';
+    engineFixingAmount = engineFixingPrice[carIndex];
+    engineFixingBill = '<tr><td>' + 'Engine Fixing' + '</td><td>₹  ' + engineFixingAmount + '</td></tr>';
     showBill();
   } 
 }
 
 function clutchFixing() {
   if(service_code.value === 'CF01'){
-    clutchFixingBill = '<tr><td>' + 'Clutch Fixing' + '</td><td>₹  ' + clutchFixingPrice[carIndex] + '</td></tr>';
+    clutchFixingAmount = clutchFixingPrice[carIndex];
+    clutchFixingBill = '<tr><td>' + 'Clutch Fixing' + '</td><td>₹  ' + clutchFixingAmount + '</td></tr>';
     showBill();
   } 
 } 
 
 function brakeFixing() {
   if(service_code.value === 'BF01'){
-    brakeFixingBill = '<tr><td>' + 'Brake Fixing' + '</td><td>₹  ' + brakeFixingPrice[carIndex] + '</td></tr>';
+    brakeFixingAmount = brakeFixingPrice[carIndex];
+    brakeFixingBill = '<tr><td>' + 'Brake Fixing' + '</td><td>₹  ' + brakeFixingAmount + '</td></tr>';
     showBill();
   } 
 }
 
 function gearFixing() {
   if(service_code.value === 'GF01'){
-    gearFixingBill = '<tr><td>' + 'Gear Fixing' + '</td><td>₹  ' + gearFixingPrice[carIndex] + '</td></tr>';
+    gearFixingAmount = gearFixingPrice[carIndex];
+    gearFixingBill = '<tr><td>' + 'Gear Fixing' + '</td><td>₹  ' + gearFixingAmount + '</td></tr>';
     showBill();
   } 
 }
@@ -109,8 +121,14 @@ function display_codes() {
 
 function showBill() {
   const bill = document.getElementById('bill');
-  bill.innerHTML = basicServicingBill + engineFixingBill + clutchFixingBill + brakeFixingBill + gearFixingBill;
+  bill.innerHTML = basicServicingBill + engineFixingBill + clutchFixingBill + brakeFixingBill + gearFixingBill; 
 
-  // totalAmount = document.getElementById('total-amount');
-  // totalAmount.innerHTML = basicServicingPrice[carIndex] + engineFixingPrice[carIndex] + clutchFixingPrice[carIndex] + brakeFixingPrice[carIndex]+ gearFixingPrice[carIndex];
+  totalAmount = document.getElementById('total-amount');
+  totalAmount.innerText = parseInt(basicServicingAmount) + parseInt(engineFixingAmount) + parseInt(clutchFixingAmount) + parseInt(brakeFixingAmount) + parseInt(gearFixingAmount);  
+
+  if(parseInt(totalAmount) > 10000){
+    console.log("totalAmount", typeof totalAmount);
+    bill.innerHTML += complimentaryCleaningBill;
+  } 
 }
+
